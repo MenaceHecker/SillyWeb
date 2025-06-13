@@ -1,3 +1,4 @@
+import BagImg from '../assets/bag1.jpeg';
 import Image from 'next/image';
 import { User } from 'lucide-react';
 
@@ -33,7 +34,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Header main Section */}
       <section className="mt-8 px-6">
         <div className="relative rounded-xl overflow-hidden bg-gray-200 h-80 flex items-center justify-center">
           <div className="text-center">
@@ -51,8 +52,21 @@ export default function Home() {
         <h2 className="text-xl font-semibold mb-6">Featured Collections</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {['Apparel', 'Accessories', 'Home & Living'].map((title) => (
-            <div key={title} className="rounded-lg overflow-hidden bg-white border border-gray-300 h-64 flex items-center justify-center text-center text-gray-700 font-medium">
-              {title}
+            <div key={title} className="rounded-lg overflow-hidden bg-white border border-gray-300 h-64 flex flex-col items-center justify-center text-center text-gray-700 font-medium p-4">
+              {title === 'Accessories' ? (
+                <>
+                  <Image
+                    src={BagImg}
+                    alt="Bag"
+                    width={200} 
+                    height={200} 
+                    objectFit="contain" 
+                  />
+                  <span className="mt-2">{title}</span> {/* Text below the image */}
+                </>
+              ) : (
+                title
+              )}
             </div>
           ))}
         </div>
